@@ -13,8 +13,9 @@ class InteractiveRecord
 
 
   def save
-    row = DB[:conn].execute(
-    "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
+    row = DB[:conn].execute (
+    "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert})
+    VALUES (#{values_for_insert})"
     )
 
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
