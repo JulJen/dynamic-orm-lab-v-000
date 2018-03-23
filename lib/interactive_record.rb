@@ -49,7 +49,7 @@ class InteractiveRecord
   def self.find_by(name)
     sql = <<-SQL
       SELECT *
-      FROM #{self.find_by_name(name)}
+      FROM #{self.table_name}
       -- WHERE name = '#{name}'
       SQL
 
