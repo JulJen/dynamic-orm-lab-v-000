@@ -50,8 +50,9 @@ class InteractiveRecord
     sql = <<-SQL
       SELECT *
       FROM #{self.table_name}
-      -- WHERE name = '#{name}'
-      SQL
+      WHERE name = '#{name}'
+      LIMIT 1
+    SQL
 
     DB[:conn].execute(sql)
   end
