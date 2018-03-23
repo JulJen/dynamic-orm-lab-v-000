@@ -54,7 +54,7 @@ class InteractiveRecord
     SQL
 
     DB[:conn].execute(sql)
-  end
+  end.first
 
 
   def table_name_for_insert
