@@ -18,17 +18,13 @@ class InteractiveRecord
      @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
    end
 
-    DB[:conn].execute(sql)
-    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
-  end
-
   def self.table_name
     self.to_s.downcase.pluralize
   end
 
   def self.column_names
     DB[:conn].results_as_hash = true
-  
+
     sql = "pragma table_info('#{table_name}')"
 
     table_info = DB[:conn].execute(sql)
