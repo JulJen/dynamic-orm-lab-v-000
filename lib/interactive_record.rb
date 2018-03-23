@@ -52,7 +52,6 @@ class InteractiveRecord
       FROM #{self.column_names}
       WHERE name = '#{name}'
       SQL
-    end
 
     DB[:conn].execute(sql)
     # dog = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)
