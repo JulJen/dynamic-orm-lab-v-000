@@ -47,22 +47,17 @@ class InteractiveRecord
 
 
   def self.find_by(name)
-    sql = "SELECT * FROM #{self.find_by_name(name)}"
-    DB[:conn].execute(sql)
+    sql = <<-SQL
+      SELECT *
+      FROM #{self.column_names}
+      WHERE name = '#{name}'
+      SQL
+    end
 
+    DB[:conn].execute(sql)
+    # dog = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)
   end
-#   it 'executes the SQL to find a row by the attribute passed into the method' do
-#     Student.new({name: "Susan", grade: 10}).save
-#     expect(Student.find_by({name: "Susan"})).to eq([{"id"=>1, "name"=>"Susan", "grade"=>10, 0=>1, 1=>"Susan", 2=>10}])
-#   end
-#
-#   it 'accounts for when an attribute value is an integer' do
-#     Student.new({name: "Susan", grade: 10}).save
-#     Student.new({name: "Geraldine", grade: 9}).save
-#     expect(Student.find_by({grade: 10})).to eq([{"id"=>1, "name"=>"Susan", "grade"=>10, 0=>1, 1=>"Susan", 2=>10}])
-#   end
-# end
-# end
+
 
   def table_name_for_insert
     self.class.table_name
