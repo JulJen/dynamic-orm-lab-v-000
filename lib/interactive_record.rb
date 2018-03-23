@@ -8,7 +8,6 @@ class InteractiveRecord
   def initialize(students={})
     students.each do |property, value|
       self.send("#{property}=", value)
-binding.pry
     end
   end
 
