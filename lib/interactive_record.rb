@@ -49,12 +49,11 @@ class InteractiveRecord
   def self.find_by(name)
     sql = <<-SQL
       SELECT *
-      FROM #{self.column_names}
+      FROM #{self.find_by_name(name)}
       WHERE name = '#{name}'
       SQL
 
     DB[:conn].execute(sql)
-    # dog = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)
   end
 
 
