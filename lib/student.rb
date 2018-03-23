@@ -6,8 +6,7 @@ require 'interactive_record.rb'
 class Student < InteractiveRecord
 
   self.column_names.each do |col_name|
-    attr_accessor col_name.to_sym
-    #=> :id, :name, :grade -> self is returned
+    attr_accessor col_name.to_sym #=> :id, :name, :grade -> self is returned
   end
 
 end
