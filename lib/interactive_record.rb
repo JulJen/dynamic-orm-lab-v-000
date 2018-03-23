@@ -51,7 +51,6 @@ class InteractiveRecord
       SELECT *
       FROM #{self.table_name}
       LIMIT 1
-      -- WHERE name = '#{name}'
     SQL
 
     DB[:conn].execute(sql)
