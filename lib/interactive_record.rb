@@ -47,13 +47,14 @@ class InteractiveRecord
 
 
   def self.find_by(name)
-    sql = <<-SQL
-      SELECT *
-      FROM #{self.find_by_name(name)}
-      LIMIT 1
-    SQL
-
-    DB[:conn].execute(sql)
+    row = DB[:conn].execute("SELECT * FROM #{self.table_name} LIMIT 1")
+    # sql = <<-SQL
+    #   SELECT *
+    #   FROM #{self.table_name}
+    #   LIMIT 1
+    # SQL
+    #
+    # DB[:conn].execute(sql)
   end
 
 
