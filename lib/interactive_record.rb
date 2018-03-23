@@ -11,14 +11,6 @@ class InteractiveRecord
     end
   end
 
-
-      # sql = <<-SQL
-      #   CREATE TABLE IF NOT EXISTS students (
-      #   id INTEGER PRIMARY KEY,
-      #   name TEXT,
-      #   grade INTEGER
-      #   )
-
   def self.table_name
     self.to_s.downcase.pluralize
   end
@@ -34,6 +26,10 @@ class InteractiveRecord
       column_names << row["name"]
     end
     column_names.compact
+  end
+
+  def table_name_for_insert
+    self.class.table_name
   end
 
 end
